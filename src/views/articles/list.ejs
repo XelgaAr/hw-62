@@ -1,0 +1,6 @@
+<%- include('../partials/header') %>
+<div class="page-head"><h1>Все статьи</h1></div>
+<% if (articles.length) { %>
+<div class="grid archive"><% for (const article of articles) { %><%- include('../partials/card', { article }) %><% } %></div>
+<% } else { %><p>Публикаций пока нет.</p><% } %>
+<%- include('../partials/footer') %>

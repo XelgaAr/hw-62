@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %> · Зенит</title>
+  <link rel="stylesheet" href="<%= root %>assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+<header class="masthead wrap">
+  <a class="brand" href="<%= root %>" aria-label="Зенит — главная"><span class="brand-icon" aria-hidden="true"></span>Зенит</a>
+  <p class="mast-note">Журнал о космосе</p>
+  <nav aria-label="Разделы журнала">
+    <a href="<%= root %>articles/" <% if (section === 'articles') { %>aria-current="true"<% } %>>Статьи</a>
+    <a href="<%= root %>users/" <% if (section === 'users') { %>aria-current="true"<% } %>>Авторы</a>
+  </nav>
+</header>
+<main class="wrap" id="main">

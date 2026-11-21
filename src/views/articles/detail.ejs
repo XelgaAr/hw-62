@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<article class="story">
+  <a class="back" href="<%= root %>articles/">← Все статьи</a>
+  <div class="story-head">
+    <div class="meta"><span class="topic"><%= article.topic || 'Статья' %></span>
+      <% if (article.date) { %><time datetime="<%= article.date %>"><%= dateLabel(article.date) %></time><% } %>
+    </div>
+    <h1><%= article.title %></h1>
+    <% if (article.summary) { %><p class="lead"><%= article.summary %></p><% } %>
+    <% if (article.author) { %><a class="byline" href="<%= root %>users/<%= article.author.id %>/"><span class="avatar small" aria-hidden="true"><%= initials(article.author.name) %></span><%= article.author.name %></a><% } %>
+  </div>
+  <% if (article.image) { %>
+  <figure class="story-photo"><img src="<%= root %>assets/media/<%= article.image %>.webp" alt="<%= article.alt %>">
+    <figcaption>Снимок · <a href="<%= article.source %>"><%= article.credit %></a></figcaption>
+  </figure>
+  <% } %>
+  <div class="body-copy"><% for (const paragraph of article.content.split(/\n\s*\n/)) { %><p><%= paragraph %></p><% } %></div>
+</article>
+<%- include('../partials/footer') %>

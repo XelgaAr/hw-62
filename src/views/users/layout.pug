@@ -1,0 +1,22 @@
+doctype html
+html(lang="ru")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title #{title} · Зенит
+    link(rel="stylesheet" href=root + 'assets/site.css')
+  body
+    a.skip(href="#main") К содержанию
+    header.masthead.wrap
+      a.brand(href=root aria-label="Зенит — главная")
+        span.brand-icon(aria-hidden="true")
+        | Зенит
+      p.mast-note Журнал о космосе
+      nav(aria-label="Разделы журнала")
+        a(href=root + 'articles/') Статьи
+        a(href=root + 'users/' aria-current="true") Авторы
+    main.wrap#main
+      block content
+    footer.wrap.footer
+      span Зенит
+      span Журнал о космосе

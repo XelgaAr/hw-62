@@ -1,0 +1,20 @@
+<%- include('partials/header') %>
+<% if (feature) { %>
+  <article class="feature <%= feature.image ? '' : 'text-only' %>">
+    <div class="feature-copy">
+      <div class="meta"><span class="topic"><%= feature.topic || 'Статья' %></span>
+      <% if (feature.date) { %><time datetime="<%= feature.date %>"><%= dateLabel(feature.date) %></time><% } %></div>
+      <h1><%= feature.title %></h1>
+      <% if (feature.summary) { %><p class="lead"><%= feature.summary %></p><% } %>
+      <a class="button" href="<%= root %>articles/<%= feature.id %>/">Читать статью <span aria-hidden="true">→</span></a>
+    </div>
+    <% if (feature.image) { %><img class="feature-photo" src="<%= root %>assets/media/<%= feature.image %>.webp" alt="<%= feature.alt %>"><% } %>
+  </article>
+<% } else { %><h1>Журнал о космосе</h1><p>Публикаций пока нет.</p><% } %>
+<% if (others.length) { %>
+  <section class="section">
+    <div class="section-head"><h2>Ещё в журнале</h2><a class="all" href="<%= root %>articles/">Все статьи <span aria-hidden="true">→</span></a></div>
+    <div class="grid"><% for (const article of others) { %><%- include('partials/card', { article }) %><% } %></div>
+  </section>
+<% } %>
+<%- include('partials/footer') %>

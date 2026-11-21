@@ -1,0 +1,29 @@
+extends layout
+block content
+  .profile
+    a.back(href=root + 'users/') ← Все авторы
+    .profile-head
+      span.avatar.large(aria-hidden="true")= initials(user.name)
+      div
+        if user.role
+          p.role= user.role
+        h1= user.name
+    if user.bio
+      p.lead= user.bio
+    if user.email
+      a.email(href='mailto:' + user.email)= user.email
+  section.section
+    .section-head
+      h2 Статьи автора
+    if articles.length
+      ul.directory
+        each article in articles
+          li
+            a.person(href=root + 'articles/' + article.id + '/')
+              span.person-text
+                if article.topic
+                  span= article.topic
+                strong= article.title
+              span.arrow(aria-hidden="true") →
+    else
+      p Пока нет публикаций.

@@ -1,0 +1,17 @@
+extends layout
+block content
+  .page-head
+    h1 Авторы
+  if users.length
+    ul.directory
+      each user in users
+        li
+          a.person(href=root + 'users/' + user.id + '/')
+            span.avatar(aria-hidden="true")= initials(user.name)
+            span.person-text
+              strong= user.name
+              if user.role
+                span= user.role
+            span.arrow(aria-hidden="true") →
+  else
+    p В каталоге пока нет авторов.
